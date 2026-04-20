@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="620.0" prefWidth="960.0" style="-fx-background-color: linear-gradient(to bottom, rgba(76, 33, 17, 1), rgba(115, 32, 3, 1));" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.ArmadioPersonaggiController">
+
+    <top>
+    <VBox alignment="CENTER" spacing="8.0" BorderPane.alignment="CENTER">
+        <padding>
+            <Insets left="18.0" right="18.0" top="40.0" />
+        </padding>
+        <Label fx:id="titoloLabel" style=" -fx-font-size: 40px;-fx-text-fill: rgba(158, 158, 158, 1) " text="Armadietto Personaggi" />
+
+    </VBox>
+    </top>
+
+    <center>
+   <VBox prefWidth="420.0" spacing="14.0">
+       <padding>
+           <Insets bottom="18.0" left="18.0" right="18.0" top="40.0" />
+       </padding>
+       <children>
+    <HBox spacing="10.0" BorderPane.alignment="CENTER">
+        <children>
+            <VBox fx:id="boxP1" prefHeight="840.0" prefWidth="420.0" spacing="10.0" style="-fx-background-radius: 14;-fx-padding: 18;-fx-background-color: rgba(198, 179, 170, 1);
+            -fx-border-color: black;-fx-border-radius: 11;-fx-border-width: 3 ">
+                <padding>
+                    <Insets bottom="8.0" left="18.0" right="18.0" top="18.0" />
+                </padding>
+                <Label style="-fx-font-size: 18px;-fx-font-weight: bold;-fx-text-fill: black" text="Personaggio 1" />
+                <Label fx:id="personaggio1NomeLabel" style="-fx-text-fill: black" text="Nome: -" />
+                <Label fx:id="personaggio1ClasseLabel" style="-fx-text-fill: black" text="Classe: -" />
+                <Label fx:id="personaggio1GenereLabel" style="-fx-text-fill: black" text="Genere: -" />
+                <Label fx:id="personaggio1AttaccoLabel" style="-fx-text-fill: black" text="Attacco: -" />
+                <Label fx:id="personaggio1DifesaLabel" style="-fx-text-fill: black" text="Difesa: -" />
+                <Label fx:id="personaggio1RisorsaLabel" style="-fx-text-fill: black" text="Risorsa: -" />
+                <Label fx:id="personaggio1HpLabel" style="-fx-text-fill: black" text="HP: -" />
+
+            </VBox>
+        </children>
+
+        <children>
+            <VBox fx:id="boxP2" prefWidth="420.0" spacing="10.0" style="-fx-background-color: rgba(198, 179, 170, 1);-fx-background-radius: 14;-fx-padding: 18;
+                -fx-border-color: black;-fx-border-radius: 11;-fx-border-width: 3">
+                <padding>
+                    <Insets bottom="8.0" left="18.0" right="18.0" top="18.0" />
+                </padding>
+                <Label style="-fx-font-size: 18px;                        -fx-font-weight: bold;                        -fx-text-fill: black;" text="Personaggio 2" />
+                <Label fx:id="personaggio2NomeLabel" style="-fx-text-fill: black" text="Nome: -" />
+                <Label fx:id="personaggio2ClasseLabel" style="-fx-text-fill: black" text="Classe: -" />
+                <Label fx:id="personaggio2GenereLabel" style="-fx-text-fill: black" text="Genere: -" />
+                <Label fx:id="personaggio2AttaccoLabel" style="-fx-text-fill: black" text="Attacco: -" />
+                <Label fx:id="personaggio2DifesaLabel" style="-fx-text-fill: black" text="Difesa: -" />
+                <Label fx:id="personaggio2RisorsaLabel" style="-fx-text-fill: black" text="Risorsa: -" />
+                <Label fx:id="personaggio2HpLabel" style="-fx-text-fill: black" text="HP: -" />
+            </VBox>
+        </children>
+
+        <children>
+            <VBox fx:id="boxP3" prefWidth="420.0" spacing="10.0" style="-fx-background-color: rgba(198, 179, 170, 1);-fx-background-radius: 14;-fx-padding: 18;
+                    -fx-border-color: black;-fx-border-radius: 11;-fx-border-width: 3">
+                <padding>
+                    <Insets bottom="8.0" left="18.0" right="18.0" top="18.0" />
+                </padding>
+                <Label style="-fx-font-size: 18px;-fx-font-weight: bold;-fx-text-fill: black;" text="Personaggio 3" />
+                <Label fx:id="personaggio3NomeLabel" style="-fx-text-fill: black" text="Nome: -" />
+                <Label fx:id="personaggio3ClasseLabel" style="-fx-text-fill: black" text="Classe: -" />
+                <Label fx:id="personaggio3GenereLabel" style="-fx-text-fill: black" text="Genere: -" />
+                <Label fx:id="personaggio3AttaccoLabel" style="-fx-text-fill: black" text="Attacco: -" />
+                <Label fx:id="personaggio3DifesaLabel" style="-fx-text-fill: black" text="Difesa: -" />
+                <Label fx:id="personaggio3RisorsaLabel" style="-fx-text-fill: black" text="Risorsa: -" />
+                <Label fx:id="personaggio3HpLabel" style="-fx-text-fill: black" text="HP: -" />
+
+            </VBox>
+        </children>
+    </HBox>
+       </children>
+    <HBox alignment="CENTER" >
+        <children>
+            <VBox alignment="CENTER_LEFT">
+                <Button onAction="#impostaPersonaggio1Attivo" text="Imposta come attivo" prefWidth="175"/>
+            </VBox>
+        </children>
+
+        <children>
+
+            <VBox alignment="CENTER">
+                <padding>
+                    <Insets  left="140.0" right="140.0" />
+                </padding>
+                <Button onAction="#impostaPersonaggio2Attivo" text="Imposta come attivo" prefWidth="175"/>
+            </VBox>
+        </children>
+        <children>
+            <VBox alignment="CENTER_RIGHT">
+
+             <Button onAction="#impostaPersonaggio3Attivo" text="Imposta come attivo" prefWidth="175"/>
+            </VBox>
+        </children>
+    </HBox>
+
+   </VBox>
+    </center>
+
+    <bottom>
+<VBox alignment="CENTER">
+    <padding>
+        <Insets bottom="10.0" />
+    </padding>
+        <Button onAction="#exit" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #5e5e5e; -fx-text-fill: white;-fx-background-radius: 300.0;" text="indietro">
+        </Button>
+</VBox>
+    </bottom>
+
+</BorderPane>
