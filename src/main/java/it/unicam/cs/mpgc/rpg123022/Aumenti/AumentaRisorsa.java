@@ -23,4 +23,9 @@ public class AumentaRisorsa implements Effetto {
     public void rimuovi(Personaggio p) {
         p.getRisorsa().rimuoviBuff(valore);
     }
+
+    @Override
+    public String toString() {
+        return "+" + valore + " " +tipo+"\n";
+    }
 }

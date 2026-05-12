@@ -18,4 +18,8 @@ public class AumentaAttacco implements Effetto {
         p.setAttacco(p.getAttacco()-valore);
     }
 
+    @Override
+    public String toString() {
+        return "+ " + valore + "Attacco\n";
+    }
 }

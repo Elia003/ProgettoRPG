@@ -7,15 +7,13 @@ import it.unicam.cs.mpgc.rpg123022.Inventario;
 import it.unicam.cs.mpgc.rpg123022.Oggetto;
 import it.unicam.cs.mpgc.rpg123022.Risorse.Risorsa;
 
-import java.util.List;
-
 
 public abstract class Personaggio {
     protected int id;
     protected String nome;
     protected final Classe classe;
     protected Genere genere;
-    protected String coloreCapelli;
+    protected int livello;
 
     protected Inventario inventario;
     protected Risorsa risorsa;
@@ -25,12 +23,12 @@ public abstract class Personaggio {
     protected int hp;
 
 
-    public Personaggio(int id, String nome, Classe classe, Genere genere, String coloreCapelli) {
+    public Personaggio(int id, String nome, Classe classe, Genere genere) {
         this.id = id;
         this.nome = nome;
         this.classe = classe;
         this.genere = genere;
-        this.coloreCapelli = coloreCapelli;
+        this.livello = 0;
         this.inventario = new Inventario(30);
     }
 
@@ -76,12 +74,12 @@ public abstract class Personaggio {
         this.genere = genere;
     }
 
-    public String getColoreCapelli() {
-        return coloreCapelli;
+    public int getLivello() {
+        return livello;
     }
 
-    public void setColoreCapelli(String coloreCapelli) {
-        this.coloreCapelli = coloreCapelli;
+    public void setLivello(int livello) {
+        this.livello = livello;
     }
 
     public Inventario getInventario() {
@@ -129,7 +127,7 @@ public abstract class Personaggio {
                 + "\nid: " + id
                 + "\nNome: " + nome
                 + "\nGenere: " + genere
-                + "\nColoreCapelli: " + coloreCapelli
+                + "\nLivello: " + livello
                 + "\nRisorsa " + risorsa
                 + "\nAttacco: " + attacco
                 + "\nDifesa: " + difesa

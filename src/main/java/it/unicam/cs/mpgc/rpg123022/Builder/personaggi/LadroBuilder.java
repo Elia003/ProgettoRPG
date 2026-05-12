@@ -10,6 +10,6 @@ public class LadroBuilder extends AbstractPersonaggioBuilder<LadroBuilder> {
 
     @Override
     public Ladro build() {
-        return new Ladro(id,nome,genere,coloreCapelli);
+        return new Ladro(id,nome,genere);
     }
 }

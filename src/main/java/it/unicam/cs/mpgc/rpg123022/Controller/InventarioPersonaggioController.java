@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -26,6 +27,11 @@ public class InventarioPersonaggioController {
 
 
     public void initialize(){
+        Font titoloFont = Font.loadFont(
+                getClass().getResourceAsStream("/fonts/MedievalSharp-Bold.ttf"),
+                40
+        );
+
         Personaggio personaggioCorrente = ArmadioPersonaggi.getInstance().getPersonaggioCorrente();
 
         caricaInventario(personaggioCorrente, listaOggettiPersonaggio);
@@ -34,6 +40,10 @@ public class InventarioPersonaggioController {
 
         if (personaggioCorrente != null) {
             titoloLabel.setText("Inventario di " + personaggioCorrente.getNome());
+        }
+
+        if (titoloFont != null && titoloLabel != null) {
+            titoloLabel.setFont(titoloFont);
         }
     }
 

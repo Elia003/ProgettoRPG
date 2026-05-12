@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.AdminController"
+            prefHeight="100.0" prefWidth="300.0"
+            style="-fx-background-color: linear-gradient(to bottom, #f7f1e3, #e8dcc8);">
+
+    <center>
+        <VBox alignment="CENTER" spacing="8.0">
+            <padding>
+                <Insets top="30.0" right="80.0" bottom="30.0" left="80.0"/>
+            </padding>
+
+            <Text text="Login" textAlignment="CENTER"/>
+
+            <TextField fx:id="usernameField" text="admin"  prefWidth="160" />
+
+            <TextField fx:id="passwordField" text="password" prefWidth="260"/>
+
+                <HBox spacing="30.0" alignment="CENTER" >
+
+                    <Button text="conferma"
+                            onAction="#controllo"
+                            style=" -fx-text-fill: green;"/>
+
+                    <Button text="esci"
+                            onAction="#exit"
+                            style="-fx-text-fill: red;"/>
+                </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

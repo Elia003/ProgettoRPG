@@ -10,6 +10,6 @@ public class BarbaroBuilder extends AbstractPersonaggioBuilder<BarbaroBuilder> {
 
     @Override
     public Barbaro build() {
-        return new Barbaro(id, nome, genere, coloreCapelli);
+        return new Barbaro(id, nome, genere);
     }
 }

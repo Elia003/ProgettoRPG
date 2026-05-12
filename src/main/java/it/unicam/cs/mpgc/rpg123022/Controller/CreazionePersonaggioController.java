@@ -13,7 +13,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,9 +24,9 @@ public class CreazionePersonaggioController {
     private final ArmadioPersonaggi armadioPersonaggi = ArmadioPersonaggi.getInstance();
 
     @FXML
-    private TextField nomeField;
+    private Label titoloLabel;
     @FXML
-    private TextField coloreCapelliField;
+    private TextField nomeField;
     @FXML
     private ChoiceBox<Classe> classeChoiceBox;
     @FXML
@@ -33,15 +35,21 @@ public class CreazionePersonaggioController {
     public void initialize(){
         classeChoiceBox.getItems().addAll(Classe.values());
         genereChoiceBox.getItems().addAll(Genere.values());
+        Font titoloFont = Font.loadFont(
+                getClass().getResourceAsStream("/fonts/MedievalSharp-Bold.ttf"),
+                60
+        );
+        if (titoloFont != null && titoloLabel != null) {
+            titoloLabel.setFont(titoloFont);
+        }
     }
 
     public void createPersonaggio(ActionEvent event) throws IOException {
         String nome = nomeField.getText();
-        String coloreCapelli = coloreCapelliField.getText();
         Classe classe = classeChoiceBox.getValue();
         Genere genere = genereChoiceBox.getValue();
 
-        if(nome.isEmpty() ||  coloreCapelli.isEmpty() || genere == null || classe == null) {
+        if(nome.isEmpty() || genere == null || classe == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -55,7 +63,7 @@ public class CreazionePersonaggioController {
             alert.setContentText("Puoi creare al massimo " + ArmadioPersonaggi.MAX_PERSONAGGI + " personaggi.");
             alert.showAndWait();
         }else{
-        Personaggio personaggio = creaPersonaggio(nome, coloreCapelli, classe, genere);
+        Personaggio personaggio = creaPersonaggio(nome, classe, genere);
         if (!armadioPersonaggi.aggiungiPersonaggio(personaggio)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Limite raggiunto");
@@ -81,7 +89,7 @@ public class CreazionePersonaggioController {
 
     }
 
-    private Personaggio creaPersonaggio(String nome,String coloreCapelli,Classe classe, Genere genere) {
+    private Personaggio creaPersonaggio(String nome,Classe classe, Genere genere) {
         int id = armadioPersonaggi.getProssimoId();
 
         return switch (classe){
@@ -89,35 +97,30 @@ public class CreazionePersonaggioController {
                     .setId(id)
                     .setNome(nome)
                     .setGenere(genere)
-                    .setColoreCapelli(coloreCapelli)
                     .build();
 
             case GUERRIERO -> new GuerrieroBuilder()
                     .setId(id)
                     .setNome(nome)
                     .setGenere(genere)
-                    .setColoreCapelli(coloreCapelli)
                     .build();
 
             case BARBARO -> new BarbaroBuilder()
                     .setId(id)
                     .setNome(nome)
                     .setGenere(genere)
-                    .setColoreCapelli(coloreCapelli)
                     .build();
 
             case DRUIDO -> new DruidoBuilder()
                     .setId(id)
                     .setNome(nome)
                     .setGenere(genere)
-                    .setColoreCapelli(coloreCapelli)
                     .build();
 
             case LADRO -> new LadroBuilder()
                     .setId(id)
                     .setNome(nome)
                     .setGenere(genere)
-                    .setColoreCapelli(coloreCapelli)
                     .build();
         };
     }

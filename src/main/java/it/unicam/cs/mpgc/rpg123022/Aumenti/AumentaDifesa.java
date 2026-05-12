@@ -19,4 +19,9 @@ public class AumentaDifesa implements Effetto {
     public void rimuovi(Personaggio p) {
         p.setDifesa(p.getDifesa() - valore);
     }
+
+    @Override
+    public String toString() {
+        return "+ " + valore + "Difesa\n";
+    }
 }

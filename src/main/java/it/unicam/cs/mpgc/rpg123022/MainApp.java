@@ -9,19 +9,26 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {
         Font.loadFont(MainApp.class.getResourceAsStream("/fonts/MedievalSharp-Bold.ttf"), 24);
 
-        FXMLLoader loaderIniziale = new FXMLLoader(MainApp.class.getResource("/schermataPrincipale.fxml"));
-        Parent root1 = loaderIniziale.load();
+        Parent rootMain = FXMLLoader.load(getClass().getResource("/schermataIniziale.fxml"));
+        primaryStage.setScene(new Scene(rootMain));
+        primaryStage.setTitle("Progetto RPG");
+        primaryStage.setMinWidth(960);
+        primaryStage.setMinHeight(620);
+        primaryStage.show();
 
-        Scene sceneBegin = new Scene(root1);
+        Stage adminStage = new Stage();
+        Parent rootAdmin = FXMLLoader.load(getClass().getResource("/Admin/admin.fxml"));
+        adminStage.setScene(new Scene(rootAdmin));
+        adminStage.setTitle("Admin");
+        adminStage.setMinWidth(960);
+        adminStage.setMinHeight(620);
+        adminStage.show();
 
-        stage.setTitle("Progetto RPG");
-        stage.setScene(sceneBegin);
-        stage.setMinWidth(960);
-        stage.setMinHeight(620);
-        stage.show();
+
+
     }
 
     public static void main(String[] args) {

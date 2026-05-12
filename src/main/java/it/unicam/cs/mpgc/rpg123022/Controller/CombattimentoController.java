@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg123022.Controller;
 
 import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
 import it.unicam.cs.mpgc.rpg123022.Builder.personaggi.GuerrieroBuilder;
+import it.unicam.cs.mpgc.rpg123022.ClasseStyleResolver;
 import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
 import it.unicam.cs.mpgc.rpg123022.Enum.TipoOggetto;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
@@ -12,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +33,8 @@ public class CombattimentoController {
     @FXML
     private Label giocatore1ClasseLabel;
     @FXML
+    private Label giocatore1LivelloLabel;
+    @FXML
     private Label giocatore1HpLabel;
     @FXML
     private Label giocatore1DifesaLabel;
@@ -43,6 +47,8 @@ public class CombattimentoController {
     @FXML
     private Label giocatore2ClasseLabel;
     @FXML
+    private Label giocatore2LivelloLabel;
+    @FXML
     private Label giocatore2HpLabel;
     @FXML
     private Label giocatore2DifesaLabel;
@@ -54,6 +60,10 @@ public class CombattimentoController {
     private ProgressBar giocatore1HpBar;
     @FXML
     private ProgressBar giocatore2HpBar;
+    @FXML
+    private VBox giocatore1Card;
+    @FXML
+    private VBox giocatore2Card;
     @FXML
     private TextArea logArea;
     @FXML
@@ -71,6 +81,8 @@ public class CombattimentoController {
 
     @FXML
     public void initialize() {
+        ClasseStyleResolver.applyRoundedClip(giocatore1Card);
+        ClasseStyleResolver.applyRoundedClip(giocatore2Card);
         caricaCombattimentoDemo();
     }
 
@@ -154,7 +166,6 @@ public class CombattimentoController {
                 .setId(99)
                 .setNome("Brina")
                 .setGenere(Genere.Donna)
-                .setColoreCapelli("Rossi")
                 .build();
 
         setCombattenti(giocatoreCorrente, avversarioDemo);
@@ -258,6 +269,7 @@ public class CombattimentoController {
                 statoInizialeGiocatore1,
                 giocatore1NomeLabel,
                 giocatore1ClasseLabel,
+                giocatore1LivelloLabel,
                 giocatore1HpLabel,
                 giocatore1DifesaLabel,
                 giocatore1RisorsaLabel,
@@ -270,6 +282,7 @@ public class CombattimentoController {
                 statoInizialeGiocatore2,
                 giocatore2NomeLabel,
                 giocatore2ClasseLabel,
+                giocatore2LivelloLabel,
                 giocatore2HpLabel,
                 giocatore2DifesaLabel,
                 giocatore2RisorsaLabel,
@@ -279,6 +292,9 @@ public class CombattimentoController {
 
         attaccaButton.setDisable(combattimentoTerminato());
         resetButton.setDisable(false);
+
+        giocatore1Card.setStyle(ClasseStyleResolver.buildCardStyle(giocatore1.getClasse()));
+        giocatore2Card.setStyle(ClasseStyleResolver.buildCardStyle(giocatore2.getClasse()));
     }
 
     private void aggiornaSchedaGiocatore(
@@ -286,6 +302,7 @@ public class CombattimentoController {
             StatoPersonaggio statoIniziale,
             Label nomeLabel,
             Label classeLabel,
+            Label livelloLabel,
             Label hpLabel,
             Label difesaLabel,
             Label risorsaLabel,
@@ -294,6 +311,7 @@ public class CombattimentoController {
     ) {
         nomeLabel.setText(personaggio.getNome());
         classeLabel.setText("Classe: " + personaggio.getClasse());
+        livelloLabel.setText("Livello: " + personaggio.getLivello());
         hpLabel.setText("HP: " + personaggio.getHp() + "/" + statoIniziale.hp());
         difesaLabel.setText("Difesa: " + personaggio.getDifesa());
         risorsaLabel.setText(

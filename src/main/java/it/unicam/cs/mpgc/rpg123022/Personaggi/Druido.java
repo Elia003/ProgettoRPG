@@ -5,8 +5,8 @@ import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
 import it.unicam.cs.mpgc.rpg123022.Risorse.Mana;
 
 public class Druido extends Personaggio {
-    public Druido(int id, String nome, Genere genere, String coloreCapelli) {
-        super(id, nome, Classe.DRUIDO, genere, coloreCapelli);
+    public Druido(int id, String nome, Genere genere) {
+        super(id, nome, Classe.DRUIDO, genere);
         this.risorsa = new Mana();
         this.attacco = 30;
         this.difesa = 25;

@@ -3,7 +3,9 @@ package it.unicam.cs.mpgc.rpg123022.Builder;
 import it.unicam.cs.mpgc.rpg123022.Aumenti.Effetto;
 import it.unicam.cs.mpgc.rpg123022.Enum.Classe;
 import it.unicam.cs.mpgc.rpg123022.Enum.PesoOggetto;
+import it.unicam.cs.mpgc.rpg123022.Enum.Rarita;
 import it.unicam.cs.mpgc.rpg123022.Enum.TipoOggetto;
+import it.unicam.cs.mpgc.rpg123022.ListaOggettiTotale;
 import it.unicam.cs.mpgc.rpg123022.Oggetto;
 
 import java.util.*;
@@ -16,6 +18,7 @@ public class OggettoBuilder {
     private Set<Classe> classiCompatibili = new HashSet<>();
     private List<Effetto> effetti = new ArrayList<>();
     private int consumo;
+    private Rarita rarita;
 
     public OggettoBuilder setNome(String nome) {
         this.nome = nome;
@@ -48,7 +51,15 @@ public class OggettoBuilder {
         return this;
     }
 
+    public OggettoBuilder setRarita(Rarita r) {
+        this.rarita = r;
+        return this;
+    }
+
     public Oggetto build() {
-        return new Oggetto(nome, tipo, peso, classiCompatibili, effetti,consumo);
+        Oggetto o = new  Oggetto(nome, tipo, peso, classiCompatibili, effetti,consumo,rarita);
+        ListaOggettiTotale lista = new ListaOggettiTotale();
+        lista.aggiungiOggetto(o);
+        return o;
     }
 }

@@ -5,8 +5,8 @@ import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
 import it.unicam.cs.mpgc.rpg123022.Risorse.Mana;
 
 public class Mago extends Personaggio {
-    public Mago(int id, String nome, Genere genere, String coloreCapelli) {
-        super(id, nome, Classe.MAGO, genere, coloreCapelli);
+    public Mago(int id, String nome, Genere genere) {
+        super(id, nome, Classe.MAGO, genere);
         this.risorsa = new Mana();
         this.attacco = 25;
         this.difesa = 20;

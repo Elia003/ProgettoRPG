@@ -10,6 +10,6 @@ public class GuerrieroBuilder extends AbstractPersonaggioBuilder<GuerrieroBuilde
 
     @Override
     public Guerriero build() {
-        return new Guerriero(id,nome,genere,coloreCapelli);
+        return new Guerriero(id,nome,genere);
     }
 }

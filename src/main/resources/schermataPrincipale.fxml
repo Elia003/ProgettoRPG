@@ -9,61 +9,66 @@
 <?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.SchermataInizialeController"
+            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.SchermataPrincipaleController"
             prefHeight="620.0"
             prefWidth="960.0"
             style="-fx-background-color: linear-gradient(to bottom, #f7f1e3, #e8dcc8);">
-
+    style="-fx-background-color: linear-gradient(to bottom, #f7f1e3, #e8dcc8);
     <top>
-    <VBox spacing="8.0" BorderPane.alignment="CENTER">
-    <padding>
-        <Insets top="18.0" right="18.0" bottom="8.0" left="18.0"/>
-    </padding>
-    <children>
-    <VBox alignment="CENTER">
-        <Label fx:id="titoloLabel"
-           alignment="CENTER_RIGHT"
-           maxWidth="-Infinity"
-           style= "-fx-text-fill: #8b4513;"
-           text="Clash of Knights"/>
-    </VBox>
-
-    </children>
-        <VBox alignment="CENTER">
-        <Button
-                fx:id="singlePlayerButton"
-                mnemonicParsing="false"
-                onAction="#apriSchermataSingleplayer"
-                prefWidth="820.0"
-                prefHeight="60.0"
-                alignment="CENTER"
-                style="-fx-background-color: #8d3b2f; -fx-text-fill: white;"
-                text="Singleplayer"/>
+        <VBox spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="18.0" right="18.0" bottom="8.0" left="18.0"/>
+            </padding>
+                <children>
+                            <VBox alignment="CENTER">
+                                <Label fx:id="titoloLabel"
+                                   alignment="CENTER_RIGHT"
+                                   maxWidth="-Infinity"
+                                   style= "-fx-text-fill: rgba(76, 33, 17, 1);"
+                                   text="Clash of Knights"/>
+                            </VBox>
+                </children>
         </VBox>
+    </top>
 
-        <VBox alignment="CENTER">
-            <Button
-                    fx:id="multiPlayerButton"
-                    mnemonicParsing="false"
-                    onAction="#apriSchermataMultiplayer"
-                    prefWidth="820.0"
-                    prefHeight="60.0"
-                    alignment="CENTER"
-                    style="-fx-background-color: #8d3b2f; -fx-text-fill: white;"
-                    text="Multiplayer"/>
+    <center>
+        <VBox spacing="5">
 
-        </VBox>
+                <VBox alignment="CENTER">
 
-        <VBox alignment="BOTTOM_CENTER">
-            <Button
-                    fx:id="creazionePersonaggioButton"
-                    mnemonicParsing="false"
-                    onAction="#apriSchermataCreazionePersonaggio"
-                    prefWidth="820.0"
-                    prefHeight="60.0"
-                    alignment="CENTER"
-                    style="-fx-background-color: #8d3b2f; -fx-text-fill: white;"
-                    text="Crea nuovo personaggio"/>
+                <Button
+                        fx:id="singlePlayerButton"
+                        mnemonicParsing="false"
+                        onAction="#apriSchermataSingleplayer"
+                        prefWidth="820.0"
+                        prefHeight="60.0"
+                        alignment="CENTER"
+                        style="-fx-background-color:rgba(115, 32, 3, 1); -fx-text-fill: white;"
+                        text="Singleplayer"/>
+                </VBox>
+
+                <VBox alignment="CENTER">
+                    <Button
+                            fx:id="multiPlayerButton"
+                            mnemonicParsing="false"
+                            onAction="#apriSchermataMultiplayer"
+                            prefWidth="820.0"
+                            prefHeight="60.0"
+                            alignment="CENTER"
+                            style="-fx-background-color: rgba(115, 32, 3, 1); -fx-text-fill: white;"
+                            text="Multiplayer"/>
+                </VBox>
+
+                <VBox alignment="BOTTOM_CENTER">
+                    <Button
+                            fx:id="creazionePersonaggioButton"
+                            mnemonicParsing="false"
+                            onAction="#apriSchermataCreazionePersonaggio"
+                            prefWidth="820.0"
+                            prefHeight="60.0"
+                            alignment="CENTER"
+                            style="-fx-background-color: rgba(115, 32, 3, 1); -fx-text-fill: white;"
+                            text="Crea nuovo personaggio"/>
 
         </VBox>
 
@@ -75,7 +80,7 @@
                     prefWidth="820.0"
                     prefHeight="60.0"
                     alignment="CENTER"
-                    style="-fx-background-color: #8d3b2f; -fx-text-fill: white;"
+                    style="-fx-background-color: rgba(115, 32, 3, 1); -fx-text-fill: white;"
                     text="Inventario"/>
 
         </VBox>
@@ -88,7 +93,7 @@
                     prefWidth="820.0"
                     prefHeight="60.0"
                     alignment="CENTER"
-                    style="-fx-background-color: #8d3b2f; -fx-text-fill: white;"
+                    style="-fx-background-color: rgba(115, 32, 3, 1); -fx-text-fill: white;"
                     text="Personaggi creati"/>
 
         </VBox>
@@ -101,13 +106,12 @@
                     prefWidth="820.0"
                     prefHeight="60.0"
                     alignment="CENTER"
-                    style="-fx-background-color: #8d3b2f; -fx-text-fill: white;"
+                    style="-fx-background-color: rgba(115, 32, 3, 1); -fx-text-fill: white;"
                     text="EXIT"/>
 
         </VBox>
     </VBox>
-    </top>
-
-
-
+</center>
+<bottom>
+</bottom>
 </BorderPane>

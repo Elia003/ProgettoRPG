@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.SchermataInizialeController"
+            prefHeight="620.0" prefWidth="960.0"
+            style="-fx-background-color: linear-gradient(to bottom, rgba(76, 33, 17, 1), rgba(115, 32, 3, 1));">
+
+    <center>
+        <VBox alignment="CENTER">
+            <Label fx:id="titoloLabel"
+                   maxWidth="-Infinity"
+                   style= "-fx-text-fill: rgba(158, 158, 158, 1);"
+                   text="Clash of Knights"/>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets bottom="1.0"/>
+            </padding>
+            <Button fx:id="iniziaButton"
+                    text="Inizia la tua avventura..."
+                    onAction="#inizia"
+                    style=" -fx-text-fill: rgba(158, 158, 158, 1); -fx-background-color: null"
+                    prefWidth="860"
+                    prefHeight="520"/>
+
+        </VBox>
+    </bottom>
+
+</BorderPane>

@@ -13,6 +13,6 @@ public class MagoBuilder extends AbstractPersonaggioBuilder<MagoBuilder> {
 
     @Override
     public Mago build() {
-        return new Mago(id, nome, genere,coloreCapelli);
+        return new Mago(id, nome, genere);
     }
 }

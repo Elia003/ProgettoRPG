@@ -19,6 +19,6 @@ public class Mana extends Risorsa {
     }
 
     public String toString() {
-         return "Mana: " + valore;
+         return "MANA: " + valore;
     }
 }

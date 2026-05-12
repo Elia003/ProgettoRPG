@@ -10,6 +10,6 @@ public class DruidoBuilder extends AbstractPersonaggioBuilder<DruidoBuilder> {
 
     @Override
     public Druido build() {
-        return new Druido(id, nome, genere,coloreCapelli);
+        return new Druido(id, nome, genere);
     }
 }

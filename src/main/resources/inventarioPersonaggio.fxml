@@ -20,8 +20,7 @@
         </padding>
         <Label fx:id="titoloLabel"
                text="Inventario Personaggi"
-               style=" -fx-font-size: 40px;
-        -fx-text-fill: rgba(158, 158, 158, 1) "/>
+               style=" -fx-text-fill: rgba(158, 158, 158, 1) "/>
         </VBox>
     </top>
     <center>
@@ -33,7 +32,8 @@
                          -fx-background-radius: 14;
                          -fx-padding: 20;">
 
-                <Label text="Oggetti Equipaggiati"
+                <Label
+                        text="Oggetti Equipaggiati"
                        style="-fx-font-size: 20px;
                               -fx-font-weight: bold;
                               -fx-text-fill: black;

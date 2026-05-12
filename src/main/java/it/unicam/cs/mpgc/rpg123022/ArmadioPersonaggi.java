@@ -55,4 +55,13 @@ public class ArmadioPersonaggi {
     public void setPersonaggioCorrente(Personaggio personaggioCorrente) {
         this.personaggioCorrente = personaggioCorrente;
     }
+
+    public void rimuoviPersonaggio(Personaggio p) {
+        personaggi.remove(p);
+        if (personaggi.isEmpty()) {
+            personaggioCorrente = null;
+        } else if (personaggioCorrente == p) {
+            personaggioCorrente = personaggi.get(0);
+        }
+    }
 }
