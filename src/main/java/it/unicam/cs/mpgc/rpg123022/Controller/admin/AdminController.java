@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg123022.Controller;
+package it.unicam.cs.mpgc.rpg123022.Controller.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

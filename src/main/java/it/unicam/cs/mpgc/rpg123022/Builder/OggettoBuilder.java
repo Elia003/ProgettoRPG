@@ -57,9 +57,7 @@ public class OggettoBuilder {
     }
 
     public Oggetto build() {
-        Oggetto o = new  Oggetto(nome, tipo, peso, classiCompatibili, effetti,consumo,rarita);
-        ListaOggettiTotale lista = new ListaOggettiTotale();
-        lista.aggiungiOggetto(o);
-        return o;
+         return new  Oggetto(nome, tipo, peso, classiCompatibili, effetti,consumo,rarita);
+
     }
 }

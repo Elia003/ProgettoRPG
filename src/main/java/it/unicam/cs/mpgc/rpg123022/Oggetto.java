@@ -16,9 +16,10 @@ public class Oggetto {
     private  final Set<Classe> classiCompatibili;
     private  final List<Effetto> effetti;
     private final int consumo;
-    private Rarita rarita;
+    private final Rarita rarita;
 
-    public Oggetto(String nome,TipoOggetto tipo,PesoOggetto peso, Set<Classe> classiCompatibili, List<Effetto> effetti, int consumo,Rarita rarita) {
+    public Oggetto(String nome,TipoOggetto tipo,PesoOggetto peso, Set<Classe> classiCompatibili,
+                   List<Effetto> effetti, int consumo,Rarita rarita) {
         this.nome = nome;
         this.tipo = tipo;
         this.peso = peso;
@@ -56,12 +57,10 @@ public class Oggetto {
 
     public String toString(){
         return  nome
-                + ", Tipo oggetto: " + tipo
-                + ", Spazio occupato: " + peso
+                + ", Spazio occupato: " + peso.getValore()
                 + ", Consumo: " + consumo
-                + ", Effetti: " + effetti
-                + ", Classi compatibili: " + classiCompatibili
-                + ", Rarita: " + rarita;
+                + ", Effetti: " + effetti.toString()
+                + ", Classi compatibili: " + classiCompatibili;
 
     }
 

@@ -3,7 +3,7 @@ package it.unicam.cs.mpgc.rpg123022.Aumenti;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 
 public class AumentaDifesa implements Effetto {
-    private int valore;
+    private final int valore;
 
     public AumentaDifesa(int valore) {
         this.valore = valore;
@@ -22,6 +22,6 @@ public class AumentaDifesa implements Effetto {
 
     @Override
     public String toString() {
-        return "+ " + valore + "Difesa\n";
+        return "+ " + valore + " Difesa";
     }
 }

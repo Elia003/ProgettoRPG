@@ -4,8 +4,8 @@ import it.unicam.cs.mpgc.rpg123022.Enum.TipoRisorsa;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 
 public class AumentaRisorsa implements Effetto {
-    private int valore;
-    private TipoRisorsa tipo;
+    private final int valore;
+    private final TipoRisorsa tipo;
 
     public AumentaRisorsa(int valore, TipoRisorsa tipo) {
         this.valore = valore;
@@ -26,6 +26,6 @@ public class AumentaRisorsa implements Effetto {
 
     @Override
     public String toString() {
-        return "+" + valore + " " +tipo+"\n";
+        return "+" + valore + " " +tipo;
     }
 }

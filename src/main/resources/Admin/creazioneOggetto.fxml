@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.CreazioneOggettoController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <VBox alignment="CENTER">
+        <Text text="Creazione oggetto" style="-fx-font-size: 30"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox alignment="CENTER" >
+            <padding>
+               <Insets left="100" right="100" bottom="50"/>
+            </padding>
+        <VBox alignment="CENTER_LEFT" spacing="5" >
+            <padding>
+                <Insets left="1" right="60" top="10"/>
+            </padding>
+
+
+                    <HBox>
+                        <TextField promptText="Nome" fx:id="nomeOggettoField" prefWidth="100"/>
+                    </HBox>
+
+                    <HBox>
+                        <TextField promptText="Consumo" fx:id="consumoField" prefWidth="100"/>
+                    </HBox>
+
+                    <HBox spacing="12">
+                        <Text text="Tipo "/>
+                        <ChoiceBox fx:id="tipoChoiceBox" prefWidth="100"/>
+                    </HBox>
+
+                    <HBox spacing="10">
+                        <Text text="Peso "/>
+                        <ChoiceBox fx:id="pesoChoiceBox" prefWidth="100"/>
+                    </HBox>
+
+                    <HBox spacing="5">
+                        <Text text="Rarità " style="-fx-text-fill:red;"/>
+                        <ChoiceBox fx:id="raritaChoiceBox" prefWidth="100"/>
+                    </HBox>
+        </VBox>
+
+
+        <VBox alignment="CENTER_LEFT" spacing="5">
+                <Text text="Classi compatibili" style="-fx-text-fill:red;"/>
+                <CheckBox fx:id="magoCheckBox" text="Mago"/>
+                <CheckBox fx:id="barbaroCheckBox" text="Barbaro"/>
+                <CheckBox fx:id="druidoCheckBox" text="Druido"/>
+                <CheckBox fx:id="guerrieroCheckBox" text="Guerriero"/>
+                <CheckBox fx:id="ladroCheckBox" text="Ladro"/>
+
+                <Text text="Effetti"  style="-fx-text-fill:red;"/>
+                <HBox spacing="5">
+                     <CheckBox text="Aumento attacco" fx:id="aumentoAttaccoCheckBox" onAction="#toggleBuffAttacco"/>
+                     <TextField fx:id="buffAttaccoField" visible="false" managed="false" promptText="Valore attacco"/>
+                </HBox>
+
+                <HBox spacing="5">
+                    <CheckBox text="Aumento difesa" fx:id="aumentoDifesaCheckBox" onAction="#toggleBuffDifesa"/>
+                    <TextField fx:id="buffDifesaField" visible="false" managed="false" promptText="Valore attacco"/>
+                </HBox>
+
+                <HBox spacing="5">
+                    <CheckBox text="Aumento risorsa" fx:id="aumentoRisorsaCheckBox" onAction="#toggleBuffrisorsa"/>
+                    <ChoiceBox fx:id="risorsaChoiceBox" visible="false" managed="false"/>
+                    <TextField fx:id="buffRisorsaField" visible="false" managed="false" promptText="Valore attacco"/>
+                </HBox>
+
+
+        </VBox>
+
+    </HBox>
+
+    </center>
+<bottom>
+    <VBox alignment="CENTER">
+        <padding>
+            <Insets bottom="30"/>
+        </padding>
+        <Button onAction="#creaOggetto" text="Conferma"/>
+    </VBox>
+</bottom>
+
+</BorderPane>

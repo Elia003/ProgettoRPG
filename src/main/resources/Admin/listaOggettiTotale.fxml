@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="620.0"
+            prefWidth="960.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.ListaOggettiTotaleController"
+            style="-fx-background-color: #800700">
+    <top>
+
+            <VBox alignment="CENTER">
+                <Text style="-fx-font-size: 40" text="Lista oggetti" />
+            </VBox>
+
+    </top>
+    <bottom>
+        <VBox alignment="CENTER" spacing="5">
+            <padding>
+                <Insets bottom="10" left="10" right="10" />
+            </padding>
+            <ListView fx:id="oggettoListView" prefHeight="520" style="-fx-background-radius: 7; -fx-background-color: #ffeee5" />
+            <Button text="Exit" onAction="#exit"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

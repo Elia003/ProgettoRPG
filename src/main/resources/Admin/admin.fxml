@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.AdminController"
+            fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.admin.AdminController"
             prefHeight="100.0" prefWidth="300.0"
             style="-fx-background-color: linear-gradient(to bottom, #f7f1e3, #e8dcc8);">
 
@@ -20,9 +20,9 @@
 
             <Text text="Login" textAlignment="CENTER"/>
 
-            <TextField fx:id="usernameField" text="admin"  prefWidth="160" />
+            <TextField fx:id="usernameField" promptText="username"  prefWidth="160" />
 
-            <TextField fx:id="passwordField" text="password" prefWidth="260"/>
+            <TextField fx:id="passwordField" promptText="password" prefWidth="260"/>
 
                 <HBox spacing="30.0" alignment="CENTER" >
 

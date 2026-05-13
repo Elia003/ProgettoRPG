@@ -19,4 +19,6 @@ public enum PesoOggetto {
     public int getValore() {
         return valore;
     }
+
+
 }
