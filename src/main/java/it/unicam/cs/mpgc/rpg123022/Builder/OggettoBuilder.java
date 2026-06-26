@@ -5,8 +5,7 @@ import it.unicam.cs.mpgc.rpg123022.Enum.Classe;
 import it.unicam.cs.mpgc.rpg123022.Enum.PesoOggetto;
 import it.unicam.cs.mpgc.rpg123022.Enum.Rarita;
 import it.unicam.cs.mpgc.rpg123022.Enum.TipoOggetto;
-import it.unicam.cs.mpgc.rpg123022.ListaOggettiTotale;
-import it.unicam.cs.mpgc.rpg123022.Oggetto;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.Oggetto;
 
 import java.util.*;
 

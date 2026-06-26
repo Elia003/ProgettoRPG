@@ -18,15 +18,19 @@ public class AdminMainPageController {
         stage.show();
     }
 
-    public void apriSchermataListaOggetti(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Admin/listaOggettiTotale.fxml"));
+
+
+    public void apriSchermataDatabase(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/databaseView.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-    public void exit(ActionEvent event) {
+    public void exit(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Admin/admin.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

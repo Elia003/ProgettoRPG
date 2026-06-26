@@ -5,10 +5,10 @@ import it.unicam.cs.mpgc.rpg123022.Aumenti.AumentaDifesa;
 import it.unicam.cs.mpgc.rpg123022.Aumenti.AumentaRisorsa;
 import it.unicam.cs.mpgc.rpg123022.Aumenti.Effetto;
 import it.unicam.cs.mpgc.rpg123022.Builder.OggettoBuilder;
+import it.unicam.cs.mpgc.rpg123022.Database.OggettoDao;
 import it.unicam.cs.mpgc.rpg123022.Enum.*;
-import it.unicam.cs.mpgc.rpg123022.ListaOggettiTotale;
-import it.unicam.cs.mpgc.rpg123022.Oggetto;
-import it.unicam.cs.mpgc.rpg123022.Risorse.Risorsa;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.ListaOggettiTotale;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.Oggetto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Set;
 
 public class CreazioneOggettoController {
+    private final OggettoDao oggettoDao = new OggettoDao();
+
     @FXML private TextField nomeOggettoField;
     @FXML private ChoiceBox<TipoOggetto> tipoChoiceBox;
     @FXML private ChoiceBox<PesoOggetto> pesoChoiceBox;
@@ -133,6 +135,7 @@ public class CreazioneOggettoController {
 
         Oggetto oggetto = buildOggetto(nomeOggetto,tipoOggetto,pesoOggetto,classiCompatibili,effetti,consumo,rarita);
         ListaOggettiTotale.getInstance().aggiungiOggetto(oggetto);
+        oggettoDao.save(oggetto);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Oggetto");

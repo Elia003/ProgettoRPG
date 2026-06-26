@@ -1,5 +1,6 @@
-package it.unicam.cs.mpgc.rpg123022;
+package it.unicam.cs.mpgc.rpg123022.AppAvvio;
 
+import it.unicam.cs.mpgc.rpg123022.Database.DatabaseManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
+        DatabaseManager.initializeDatabase();
         Font.loadFont(MainApp.class.getResourceAsStream("/fonts/MedievalSharp-Bold.ttf"), 24);
 
         Parent rootMain = FXMLLoader.load(getClass().getResource("/schermataIniziale.fxml"));

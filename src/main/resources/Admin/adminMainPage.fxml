@@ -15,9 +15,7 @@
             <center>
                 <VBox alignment="CENTER" spacing="10.0" >
                     <Button text="Crea Oggetto" onAction="#apriSchermataCreazioneOggetto" prefWidth="300" prefHeight="15"/>
-                    <Button text="Oggetti creati" onAction="#apriSchermataListaOggetti" prefWidth="300" prefHeight="15"/>
-                    <Button text="crea NPC" prefWidth="300" prefHeight="15"/>
-                    <Button text="NPC Manager" prefWidth="300" prefHeight="15"/>
+                    <Button text="Database" onAction="#apriSchermataDatabase" prefWidth="300" prefHeight="15"/>
                     <Button text="Esci" onAction="#exit" prefWidth="300" prefHeight="15"/>
 
                 </VBox>

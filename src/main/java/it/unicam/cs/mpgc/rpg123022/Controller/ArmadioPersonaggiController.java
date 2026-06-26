@@ -1,7 +1,8 @@
 package it.unicam.cs.mpgc.rpg123022.Controller;
 
-import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
-import it.unicam.cs.mpgc.rpg123022.ClasseStyleResolver;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ArmadioPersonaggi;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ClasseStyleResolver;
+import it.unicam.cs.mpgc.rpg123022.Database.PersonaggioDao;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -106,7 +105,7 @@ public class ArmadioPersonaggiController {
     }
 
     private void setPersonaggio1(Personaggio p) {
-        boxP1.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse()));
+        boxP1.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse(),p.getGenere()));
         personaggio1NomeLabel.setText("Nome: " + p.getNome());
         personaggio1ClasseLabel.setText("Classe: " + p.getClasse());
         personaggio1LivelloLabel.setText("Livello: " + p.getLivello());
@@ -118,7 +117,7 @@ public class ArmadioPersonaggiController {
     }
 
     private void setPersonaggio2(Personaggio p) {
-        boxP2.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse()));
+        boxP2.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse(), p.getGenere()));
         personaggio2NomeLabel.setText("Nome: " + p.getNome());
         personaggio2ClasseLabel.setText("Classe: " + p.getClasse());
         personaggio2LivelloLabel.setText("Livello: " + p.getLivello());
@@ -130,7 +129,7 @@ public class ArmadioPersonaggiController {
     }
 
     private void setPersonaggio3(Personaggio p) {
-        boxP3.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse()));
+        boxP3.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse(), p.getGenere()));
         personaggio3NomeLabel.setText("Nome: " + p.getNome());
         personaggio3ClasseLabel.setText("Classe: " + p.getClasse());
         personaggio3LivelloLabel.setText("Livello: " + p.getLivello());
@@ -141,12 +140,6 @@ public class ArmadioPersonaggiController {
         personaggio3HpLabel.setText("HP: " + p.getHp());
     }
 
-    public void exit(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/schermataPrincipale.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
     public void impostaPersonaggio1Attivo() {
         Personaggio p = ArmadioPersonaggi.getInstance().getPersonaggi().get(0);
         setAttivo(boxP1, p);
@@ -159,7 +152,6 @@ public class ArmadioPersonaggiController {
         Personaggio p = ArmadioPersonaggi.getInstance().getPersonaggi().get(2);
         setAttivo(boxP3, p);
     }
-
     public void eliminaPersonaggio1() {
         eliminaPersonaggio(0);
     }
@@ -177,7 +169,7 @@ public class ArmadioPersonaggiController {
         for (int i = 0; i < boxes.size(); i++) {
             VBox box = boxes.get(i);
             if (i < personaggi.size()) {
-                box.setStyle(ClasseStyleResolver.buildCardStyle(personaggi.get(i).getClasse()));
+                box.setStyle(ClasseStyleResolver.buildCardStyle(personaggi.get(i).getClasse(),personaggi.get(i).getGenere()));
             } else {
                 box.setStyle(EMPTY_STYLE);
             }
@@ -186,7 +178,7 @@ public class ArmadioPersonaggiController {
 
     private void setAttivo(VBox boxSelezionato, Personaggio p) {
         resetColori();
-        boxSelezionato.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse(), true));
+        boxSelezionato.setStyle(ClasseStyleResolver.buildCardStyle(p.getClasse(), p.getGenere(),true));
 
         ArmadioPersonaggi.getInstance().setPersonaggioCorrente(p);
     }
@@ -196,9 +188,10 @@ public class ArmadioPersonaggiController {
         if (indice >= personaggi.size()) {
             return;
         }
-
+        PersonaggioDao personaggioDao = new PersonaggioDao();
         Personaggio personaggio = personaggi.get(indice);
         ArmadioPersonaggi.getInstance().rimuoviPersonaggio(personaggio);
+        personaggioDao.deleteById(personaggio.getId());
         aggiornaVista();
     }
 
@@ -263,6 +256,13 @@ public class ArmadioPersonaggiController {
         personaggio3DifesaLabel.setText("Difesa: -");
         personaggio3RisorsaLabel.setText("Risorsa: -");
         personaggio3HpLabel.setText("HP: -");
+    }
+
+    public void exit(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/schermataPrincipale.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 

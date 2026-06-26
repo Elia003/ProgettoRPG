@@ -3,12 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17"
@@ -56,17 +57,50 @@
                               style="-fx-background-color: rgba(255,255,255,0.75); -fx-background-radius: 14; -fx-padding: 18;">
                             <children>
                                 <Label text="Giocatore 1"
-                                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6a3d1d;"/>
+                                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
                                 <Label fx:id="giocatore1NomeLabel"
                                        style="-fx-font-size: 20px; -fx-font-weight: bold;"
                                        text="Nome"/>
-                                <Label fx:id="giocatore1ClasseLabel" text="Classe: -"/>
-                                <Label fx:id="giocatore1LivelloLabel" text="Livello: -"/>
-                                <Label fx:id="giocatore1AttaccoLabel" text="Attacco: -"/>
-                                <Label fx:id="giocatore1DifesaLabel" text="Difesa: -"/>
-                                <Label fx:id="giocatore1RisorsaLabel" text="Risorsa: -"/>
-                                <Label fx:id="giocatore1HpLabel" text="HP: -"/>
-                                <ProgressBar fx:id="giocatore1HpBar" prefWidth="9999.0" progress="1.0"/>
+                                <Label fx:id="giocatore1ClasseLabel" text="Classe: -" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="giocatore1LivelloLabel" text="Livello: -" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="giocatore1AttaccoLabel" text="Attacco: -" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="giocatore1DifesaLabel" text="Difesa: -" style="-fx-font-weight: bold;"/>
+                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                    <children>
+                                        <Label fx:id="giocatore1RisorsaLabel" minWidth="76.0" prefWidth="76.0" text="Risorsa:" style="-fx-font-weight: bold;"/>
+                                        <StackPane fx:id="giocatore1RisorsaBar"
+                                                   alignment="CENTER_LEFT"
+                                                   maxWidth="Infinity"
+                                                   prefHeight="18.0"
+                                                   HBox.hgrow="ALWAYS"
+                                                   style="-fx-background-color: rgba(0,0,0,0.45); -fx-background-radius: 999;">
+                                            <children>
+                                                <Region fx:id="giocatore1RisorsaBarFill"
+                                                        prefHeight="18.0"
+                                                        style="-fx-background-color: #3498db; -fx-background-radius: 999;"/>
+                                            </children>
+                                        </StackPane>
+                                        <Label fx:id="giocatore1RisorsaValoreLabel" minWidth="48.0" prefWidth="48.0" text="-/-" style="-fx-font-weight: bold;"/>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                    <children>
+                                        <Label fx:id="giocatore1HpLabel" minWidth="32.0" prefWidth="32.0" text="HP:" style="-fx-font-weight: bold;"/>
+                                        <StackPane fx:id="giocatore1HpBar"
+                                                   alignment="CENTER_LEFT"
+                                                   maxWidth="Infinity"
+                                                   prefHeight="18.0"
+                                                   HBox.hgrow="ALWAYS"
+                                                   style="-fx-background-color: rgba(0,0,0,0.45); -fx-background-radius: 999;">
+                                            <children>
+                                                <Region fx:id="giocatore1HpBarFill"
+                                                        prefHeight="18.0"
+                                                        style="-fx-background-color: #2ecc71; -fx-background-radius: 999;"/>
+                                            </children>
+                                        </StackPane>
+                                        <Label fx:id="giocatore1HpValoreLabel" minWidth="58.0" prefWidth="58.0" text="-/-" style="-fx-font-weight: bold;"/>
+                                    </children>
+                                </HBox>
                             </children>
                         </VBox>
                         <VBox fx:id="giocatore2Card"
@@ -75,17 +109,50 @@
                               style="-fx-background-color: rgba(255,255,255,0.75); -fx-background-radius: 14; -fx-padding: 18;">
                             <children>
                                 <Label text="Giocatore 2"
-                                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1d4d6a;"/>
+                                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
                                 <Label fx:id="giocatore2NomeLabel"
                                        style="-fx-font-size: 20px; -fx-font-weight: bold;"
                                        text="Nome"/>
-                                <Label fx:id="giocatore2ClasseLabel" text="Classe: -"/>
-                                <Label fx:id="giocatore2LivelloLabel" text="Livello: -"/>
-                                <Label fx:id="giocatore2AttaccoLabel" text="Attacco: -"/>
-                                <Label fx:id="giocatore2DifesaLabel" text="Difesa: -"/>
-                                <Label fx:id="giocatore2RisorsaLabel" text="Risorsa: -"/>
-                                <Label fx:id="giocatore2HpLabel" text="HP: -"/>
-                                <ProgressBar fx:id="giocatore2HpBar" prefWidth="9999.0" progress="1.0"/>
+                                <Label fx:id="giocatore2ClasseLabel" text="Classe: -" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="giocatore2LivelloLabel" text="Livello: -" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="giocatore2AttaccoLabel" text="Attacco: -" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="giocatore2DifesaLabel" text="Difesa: -" style="-fx-font-weight: bold;"/>
+                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                    <children>
+                                        <Label fx:id="giocatore2RisorsaLabel" minWidth="76.0" prefWidth="76.0" text="Risorsa:" style="-fx-font-weight: bold;"/>
+                                        <StackPane fx:id="giocatore2RisorsaBar"
+                                                   alignment="CENTER_LEFT"
+                                                   maxWidth="Infinity"
+                                                   prefHeight="18.0"
+                                                   HBox.hgrow="ALWAYS"
+                                                   style="-fx-background-color: rgba(0,0,0,0.45); -fx-background-radius: 999;">
+                                            <children>
+                                                <Region fx:id="giocatore2RisorsaBarFill"
+                                                        prefHeight="18.0"
+                                                        style="-fx-background-color: #3498db; -fx-background-radius: 999;"/>
+                                            </children>
+                                        </StackPane>
+                                        <Label fx:id="giocatore2RisorsaValoreLabel" minWidth="48.0" prefWidth="48.0" text="-/-" style="-fx-font-weight: bold;"/>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                    <children>
+                                        <Label fx:id="giocatore2HpLabel" minWidth="32.0" prefWidth="32.0" text="HP:" style="-fx-font-weight: bold;"/>
+                                        <StackPane fx:id="giocatore2HpBar"
+                                                   alignment="CENTER_LEFT"
+                                                   maxWidth="Infinity"
+                                                   prefHeight="18.0"
+                                                   HBox.hgrow="ALWAYS"
+                                                   style="-fx-background-color: rgba(0,0,0,0.45); -fx-background-radius: 999;">
+                                            <children>
+                                                <Region fx:id="giocatore2HpBarFill"
+                                                        prefHeight="18.0"
+                                                        style="-fx-background-color: #2ecc71; -fx-background-radius: 999;"/>
+                                            </children>
+                                        </StackPane>
+                                        <Label fx:id="giocatore2HpValoreLabel" minWidth="58.0" prefWidth="58.0" text="-/-" style="-fx-font-weight: bold;"/>
+                                    </children>
+                                </HBox>
                             </children>
                         </VBox>
                     </children>

@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg123022;
+package it.unicam.cs.mpgc.rpg123022.Oggetti;
 
 import it.unicam.cs.mpgc.rpg123022.Aumenti.Effetto;
 import it.unicam.cs.mpgc.rpg123022.Enum.Classe;
@@ -33,6 +33,10 @@ public class Oggetto {
 
     public int getPeso() {
         return peso.getValore();
+    }
+
+    public PesoOggetto getPesoOggetto() {
+        return peso;
     }
 
     public String getNome() {

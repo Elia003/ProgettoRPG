@@ -12,6 +12,14 @@ public class AumentaRisorsa implements Effetto {
         this.tipo = tipo;
     }
 
+    public int getValore() {
+        return valore;
+    }
+
+    public TipoRisorsa getTipo() {
+        return tipo;
+    }
+
     @Override
     public void applica(Personaggio p) {
         if (p.getRisorsa().getTipo() == tipo) {

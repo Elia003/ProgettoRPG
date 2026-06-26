@@ -1,6 +1,7 @@
-package it.unicam.cs.mpgc.rpg123022;
+package it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
 
 import it.unicam.cs.mpgc.rpg123022.Enum.Classe;
+import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
 
@@ -23,18 +24,37 @@ public class ClasseStyleResolver {
 
     private ClasseStyleResolver(){}
 
-    public static String getImagePath(Classe classe){
+    public static String getImagePath(Classe classe, Genere genere){
         return switch (classe) {
-            case MAGO -> "/images/wizard.jpg";
-            case GUERRIERO -> "/images/warrior.jpg";
-                case BARBARO -> "/images/barbarian.jpg";
-                case LADRO -> "/images/rogue.jpg";
-                case DRUIDO -> "/images/druid.jpg";
+            case MAGO -> switch(genere){
+                case Uomo -> "/schedePersonaggi/wizard.jpg";
+                case Donna -> "/schedePersonaggi/woman_wizard.png";
+            };
+
+            case GUERRIERO -> switch(genere){
+                case Uomo -> "/schedePersonaggi/warrior.jpg";
+                case Donna -> "/schedePersonaggi/woman_warrior.png";
+            };
+
+            case BARBARO -> switch(genere){
+                case Uomo -> "/schedePersonaggi/barbarian.jpg";
+                case Donna -> "/schedePersonaggi/woman_barbarian.png";
+            };
+
+            case LADRO -> switch(genere){
+                case Uomo -> "/schedePersonaggi/rogue.jpg";
+                case Donna -> "/schedePersonaggi/woman_rogue.png";
+            };
+
+            case DRUIDO -> switch(genere){
+                case Uomo -> "/schedePersonaggi/druid.jpg";
+                case Donna -> "/schedePersonaggi/druid.png";
+            };
         };
     }
 
-    public static String buildCardStyle(Classe classe) {
-        return buildCardStyle(classe, false);
+    public static String buildCardStyle(Classe classe,Genere genere) {
+        return buildCardStyle(classe, genere, false);
     }
 
     public static void applyRoundedClip(Region region) {
@@ -46,9 +66,9 @@ public class ClasseStyleResolver {
         region.setClip(clip);
     }
 
-    public static String buildCardStyle(Classe classe, boolean attivo){
+    public static String buildCardStyle(Classe classe,Genere genere, boolean attivo){
         String baseStyle = attivo ? ACTIVE_CARD_STYLE : BASE_CARD_STYLE;
-        String imagePath = getImagePath(classe);
+        String imagePath = getImagePath(classe, genere);
 
         if (imagePath == null) {
             return baseStyle;

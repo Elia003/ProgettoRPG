@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,7 +18,11 @@ public class AdminController {
     @FXML
     private TextField usernameField;
     @FXML
-    private TextField passwordField;
+    private TextField passwordVisibleField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private CheckBox showPasswordCheckBox;
 
     private final String username;
     private final String chiave;
@@ -27,12 +33,26 @@ public class AdminController {
     }
 
     public void initialize(){
+        passwordVisibleField.setDisable(false);
+        passwordVisibleField.setManaged(false);
 
+        passwordVisibleField.textProperty().bindBidirectional(passwordField.textProperty());
+    }
+    @FXML
+    private void togglePasswordVisible(){
+        boolean mostra = showPasswordCheckBox.isSelected();
+
+        passwordVisibleField.setVisible(mostra);
+        passwordVisibleField.setManaged(mostra);
+
+        passwordField.setVisible(!mostra);
+        passwordField.setManaged(!mostra);
     }
 
     public void controllo(ActionEvent event) throws IOException {
         String usernameInserito = usernameField.getText();
         String passwordInserita = passwordField.getText();
+
 
         if(usernameInserito.isEmpty() || passwordInserita.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);

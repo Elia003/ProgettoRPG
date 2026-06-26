@@ -1,25 +1,38 @@
 package it.unicam.cs.mpgc.rpg123022.Controller;
 
-import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ArmadioPersonaggi;
 import it.unicam.cs.mpgc.rpg123022.Builder.personaggi.GuerrieroBuilder;
-import it.unicam.cs.mpgc.rpg123022.ClasseStyleResolver;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ClasseStyleResolver;
 import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
 import it.unicam.cs.mpgc.rpg123022.Enum.TipoOggetto;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 import javafx.event.ActionEvent;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CombattimentoController {
+    private static final double SOGLIA_HP_ROSSO = 0.30;
+    private static final String COLORE_HP_ALTA = "#2ecc71";
+    private static final String COLORE_HP_BASSA = "#e74c3c";
+    private static final String COLORE_RISORSA = "#3498db";
+    private static final String PROPRIETA_PROGRESS_BARRA = "progressBarra";
+
     @FXML
     private Label titoloLabel;
     @FXML
@@ -37,9 +50,13 @@ public class CombattimentoController {
     @FXML
     private Label giocatore1HpLabel;
     @FXML
+    private Label giocatore1HpValoreLabel;
+    @FXML
     private Label giocatore1DifesaLabel;
     @FXML
     private Label giocatore1RisorsaLabel;
+    @FXML
+    private Label giocatore1RisorsaValoreLabel;
     @FXML
     private Label giocatore1AttaccoLabel;
     @FXML
@@ -51,15 +68,31 @@ public class CombattimentoController {
     @FXML
     private Label giocatore2HpLabel;
     @FXML
+    private Label giocatore2HpValoreLabel;
+    @FXML
     private Label giocatore2DifesaLabel;
     @FXML
     private Label giocatore2RisorsaLabel;
     @FXML
+    private Label giocatore2RisorsaValoreLabel;
+    @FXML
     private Label giocatore2AttaccoLabel;
     @FXML
-    private ProgressBar giocatore1HpBar;
+    private StackPane giocatore1HpBar;
     @FXML
-    private ProgressBar giocatore2HpBar;
+    private Region giocatore1HpBarFill;
+    @FXML
+    private StackPane giocatore1RisorsaBar;
+    @FXML
+    private Region giocatore1RisorsaBarFill;
+    @FXML
+    private StackPane giocatore2HpBar;
+    @FXML
+    private Region giocatore2HpBarFill;
+    @FXML
+    private StackPane giocatore2RisorsaBar;
+    @FXML
+    private Region giocatore2RisorsaBarFill;
     @FXML
     private VBox giocatore1Card;
     @FXML
@@ -83,8 +116,46 @@ public class CombattimentoController {
     public void initialize() {
         ClasseStyleResolver.applyRoundedClip(giocatore1Card);
         ClasseStyleResolver.applyRoundedClip(giocatore2Card);
+        configuraBarraProgressiva(giocatore1HpBar, giocatore1HpBarFill);
+        configuraBarraProgressiva(giocatore2HpBar, giocatore2HpBarFill);
+        configuraBarraProgressiva(giocatore1RisorsaBar, giocatore1RisorsaBarFill);
+        configuraBarraProgressiva(giocatore2RisorsaBar, giocatore2RisorsaBarFill);
         caricaCombattimentoDemo();
+
+        String colore = "gold";
+
+        giocatore1NomeLabel.setTextFill(Paint.valueOf(colore));
+        giocatore1ClasseLabel.setTextFill(Paint.valueOf(colore));
+        giocatore1LivelloLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore1HpLabel);
+        giocatore1HpLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore1HpValoreLabel);
+        giocatore1HpValoreLabel.setTextFill(Paint.valueOf(colore));
+        giocatore1DifesaLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore1RisorsaLabel);
+        giocatore1RisorsaLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore1RisorsaValoreLabel);
+        giocatore1RisorsaValoreLabel.setTextFill(Paint.valueOf(colore));
+        giocatore1AttaccoLabel.setTextFill(Paint.valueOf(colore));
+
+        giocatore2NomeLabel.setTextFill(Paint.valueOf(colore));
+        giocatore2ClasseLabel.setTextFill(Paint.valueOf(colore));
+        giocatore2LivelloLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore2HpLabel);
+        giocatore2HpLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore2HpValoreLabel);
+        giocatore2HpValoreLabel.setTextFill(Paint.valueOf(colore));
+        giocatore2DifesaLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore2RisorsaLabel);
+        giocatore2RisorsaLabel.setTextFill(Paint.valueOf(colore));
+        bloccaLarghezzaLabel(giocatore2RisorsaValoreLabel);
+        giocatore2RisorsaValoreLabel.setTextFill(Paint.valueOf(colore));
+        giocatore2AttaccoLabel.setTextFill(Paint.valueOf(colore));
+
     }
+
+
+
 
     @FXML
     private void onAttacca() {
@@ -163,7 +234,6 @@ public class CombattimentoController {
         }
 
         Personaggio avversarioDemo = new GuerrieroBuilder()
-                .setId(99)
                 .setNome("Brina")
                 .setGenere(Genere.Donna)
                 .build();
@@ -271,10 +341,15 @@ public class CombattimentoController {
                 giocatore1ClasseLabel,
                 giocatore1LivelloLabel,
                 giocatore1HpLabel,
+                giocatore1HpValoreLabel,
                 giocatore1DifesaLabel,
                 giocatore1RisorsaLabel,
+                giocatore1RisorsaValoreLabel,
                 giocatore1AttaccoLabel,
-                giocatore1HpBar
+                giocatore1HpBar,
+                giocatore1HpBarFill,
+                giocatore1RisorsaBar,
+                giocatore1RisorsaBarFill
         );
 
         aggiornaSchedaGiocatore(
@@ -284,17 +359,22 @@ public class CombattimentoController {
                 giocatore2ClasseLabel,
                 giocatore2LivelloLabel,
                 giocatore2HpLabel,
+                giocatore2HpValoreLabel,
                 giocatore2DifesaLabel,
                 giocatore2RisorsaLabel,
+                giocatore2RisorsaValoreLabel,
                 giocatore2AttaccoLabel,
-                giocatore2HpBar
+                giocatore2HpBar,
+                giocatore2HpBarFill,
+                giocatore2RisorsaBar,
+                giocatore2RisorsaBarFill
         );
 
         attaccaButton.setDisable(combattimentoTerminato());
         resetButton.setDisable(false);
 
-        giocatore1Card.setStyle(ClasseStyleResolver.buildCardStyle(giocatore1.getClasse()));
-        giocatore2Card.setStyle(ClasseStyleResolver.buildCardStyle(giocatore2.getClasse()));
+        giocatore1Card.setStyle(ClasseStyleResolver.buildCardStyle(giocatore1.getClasse(),giocatore1.getGenere()));
+        giocatore2Card.setStyle(ClasseStyleResolver.buildCardStyle(giocatore2.getClasse(),giocatore2.getGenere()));
     }
 
     private void aggiornaSchedaGiocatore(
@@ -304,22 +384,31 @@ public class CombattimentoController {
             Label classeLabel,
             Label livelloLabel,
             Label hpLabel,
+            Label hpValoreLabel,
             Label difesaLabel,
             Label risorsaLabel,
+            Label risorsaValoreLabel,
             Label attaccoLabel,
-            ProgressBar hpBar
+            StackPane hpBar,
+            Region hpBarFill,
+            StackPane risorsaBar,
+            Region risorsaBarFill
     ) {
         nomeLabel.setText(personaggio.getNome());
         classeLabel.setText("Classe: " + personaggio.getClasse());
         livelloLabel.setText("Livello: " + personaggio.getLivello());
-        hpLabel.setText("HP: " + personaggio.getHp() + "/" + statoIniziale.hp());
+        hpLabel.setText("HP:");
+        hpValoreLabel.setText(personaggio.getHp() + "/" + statoIniziale.hp());
         difesaLabel.setText("Difesa: " + personaggio.getDifesa());
-        risorsaLabel.setText(
-                personaggio.getRisorsa().getTipo() + ": "
-                        + personaggio.getRisorsa().getValore() + "/" + statoIniziale.risorsa()
-        );
+        risorsaLabel.setText(personaggio.getRisorsa().getTipo() + ":");
+        risorsaValoreLabel.setText(personaggio.getRisorsa().getValore() + "/" + statoIniziale.risorsa());
         attaccoLabel.setText("Attacco: " + personaggio.getAttacco());
-        hpBar.setProgress(calcolaProgress(personaggio.getHp(), statoIniziale.hp()));
+        double hpProgress = calcolaProgress(personaggio.getHp(), statoIniziale.hp());
+        aggiornaStileHpBar(hpBarFill, hpProgress);
+        animaBarraProgressiva(hpBar, hpBarFill, hpProgress);
+        double risorsaProgress = calcolaProgress(personaggio.getRisorsa().getValore(), statoIniziale.risorsa());
+        aggiornaStileRisorsaBar(risorsaBarFill);
+        animaBarraProgressiva(risorsaBar, risorsaBarFill, risorsaProgress);
     }
 
     private double calcolaProgress(int valoreCorrente, int valoreMassimo) {
@@ -327,6 +416,51 @@ public class CombattimentoController {
             return 0;
         }
         return Math.max(0, Math.min(1, (double) valoreCorrente / valoreMassimo));
+    }
+
+    private void animaBarraProgressiva(StackPane barra, Region riempimentoBarra, double progress) {
+        barra.getProperties().put(PROPRIETA_PROGRESS_BARRA, progress);
+        double larghezzaBarra = barra.getWidth();
+        double larghezzaCorrente = riempimentoBarra.getPrefWidth() >= 0 ? riempimentoBarra.getPrefWidth() : larghezzaBarra;
+        double nuovaLarghezza = larghezzaBarra * progress;
+
+        if (larghezzaBarra <= 0) {
+            riempimentoBarra.setPrefWidth(0);
+            return;
+        }
+
+        Timeline animazioneHp = new Timeline(
+                new KeyFrame(
+                        Duration.millis(50),
+                        new KeyValue(riempimentoBarra.prefWidthProperty(), nuovaLarghezza)
+                )
+        );
+        riempimentoBarra.setPrefWidth(larghezzaCorrente);
+        animazioneHp.play();
+    }
+
+    private void configuraBarraProgressiva(StackPane barra, Region riempimentoBarra) {
+        barra.getProperties().put(PROPRIETA_PROGRESS_BARRA, 1.0);
+        riempimentoBarra.setMinWidth(0);
+        riempimentoBarra.setMaxWidth(Region.USE_PREF_SIZE);
+        barra.widthProperty().addListener((observable, oldWidth, newWidth) -> {
+            Object progress = barra.getProperties().get(PROPRIETA_PROGRESS_BARRA);
+            double percentualeHp = progress instanceof Double ? (Double) progress : 1.0;
+            riempimentoBarra.setPrefWidth(newWidth.doubleValue() * percentualeHp);
+        });
+    }
+
+    private void aggiornaStileHpBar(Region hpBarFill, double progress) {
+        String coloreHp = progress <= SOGLIA_HP_ROSSO ? COLORE_HP_BASSA : COLORE_HP_ALTA;
+        hpBarFill.setStyle("-fx-background-color: " + coloreHp + "; -fx-background-radius: 999;");
+    }
+
+    private void aggiornaStileRisorsaBar(Region risorsaBarFill) {
+        risorsaBarFill.setStyle("-fx-background-color: " + COLORE_RISORSA + "; -fx-background-radius: 999;");
+    }
+
+    private void bloccaLarghezzaLabel(Label label) {
+        label.setMinWidth(label.getPrefWidth());
     }
 
     private String nomeRisorsa(Personaggio personaggio) {

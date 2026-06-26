@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg123022.Controller;
 
-import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ArmadioPersonaggi;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +31,8 @@ public class SchermataPrincipaleController {
     private Button inventarioButton;
     @FXML
     private Button buildsButton;
+    @FXML
+    private Button oggettiCreatiButton;
 
 
 
@@ -72,6 +74,11 @@ public class SchermataPrincipaleController {
         if (bottoneFont != null && inventarioButton != null) {
             inventarioButton.setFont(bottoneFont);
         }
+
+        if (bottoneFont != null && oggettiCreatiButton != null) {
+            oggettiCreatiButton.setFont(bottoneFont);
+        }
+
     }
 
     @FXML
@@ -133,7 +140,16 @@ public class SchermataPrincipaleController {
             return;
         }
 
+
+
         Parent root = FXMLLoader.load(getClass().getResource("/inventarioPersonaggio.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void apriSchermataListaOggetti(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/listaOggettiTotale.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

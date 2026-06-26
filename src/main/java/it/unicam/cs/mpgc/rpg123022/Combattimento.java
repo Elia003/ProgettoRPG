@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg123022;
 
 import it.unicam.cs.mpgc.rpg123022.Enum.TipoOggetto;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.Oggetto;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 
 import java.util.concurrent.ThreadLocalRandom;

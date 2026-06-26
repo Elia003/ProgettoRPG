@@ -1,7 +1,8 @@
 package it.unicam.cs.mpgc.rpg123022.Controller;
 
-import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ArmadioPersonaggi;
 import it.unicam.cs.mpgc.rpg123022.Builder.personaggi.*;
+import it.unicam.cs.mpgc.rpg123022.Database.PersonaggioDao;
 import it.unicam.cs.mpgc.rpg123022.Enum.Classe;
 import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
@@ -22,6 +23,7 @@ import java.io.IOException;
 
 public class CreazionePersonaggioController {
     private final ArmadioPersonaggi armadioPersonaggi = ArmadioPersonaggi.getInstance();
+    private final PersonaggioDao personaggioDao = new PersonaggioDao();
 
     @FXML
     private Label titoloLabel;
@@ -72,6 +74,7 @@ public class CreazionePersonaggioController {
             alert.showAndWait();
             return;
         }
+        personaggioDao.save(personaggio);
 
 
         //Alert per la corretta creazione di un personaggio

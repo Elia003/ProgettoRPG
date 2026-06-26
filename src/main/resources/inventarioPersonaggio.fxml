@@ -53,12 +53,27 @@
         <padding>
             <Insets bottom="10.0"/>
         </padding>
-        <Button text="indietro"
+        <HBox alignment="CENTER">
+            <children>
+                <Button text="Rimuovi"
+                        onAction="#rimuoviOggetto"
+                        prefWidth="80.0"
+                        prefHeight="22.0"
+                        style="-fx-background-color: #5e5e5e; -fx-text-fill: white;-fx-background-radius: 300.0;">
+
+                </Button>
+            </children>
+
+            <children>
+            <Button text="Indietro"
                 onAction="#exit"
                 prefWidth="80.0"
                 prefHeight="22.0"
                 style="-fx-background-color: #5e5e5e; -fx-text-fill: white;-fx-background-radius: 300.0;">
         </Button>
+            </children>
+
+        </HBox>
     </VBox>
 </bottom>
 </BorderPane>

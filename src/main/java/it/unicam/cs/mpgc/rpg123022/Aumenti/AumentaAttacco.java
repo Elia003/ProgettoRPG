@@ -8,6 +8,11 @@ public class AumentaAttacco implements Effetto {
     public AumentaAttacco(int valore){
         this.valore = valore;
     }
+
+    public int getValore() {
+        return valore;
+    }
+
     @Override
     public void applica(Personaggio p) {
         p.setAttacco(p.getAttacco()+valore);

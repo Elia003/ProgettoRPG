@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg123022.Controller;
 
-import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
-import it.unicam.cs.mpgc.rpg123022.Oggetto;
+import it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi.ArmadioPersonaggi;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.Oggetto;
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -69,6 +70,42 @@ public class InventarioPersonaggioController {
                 }
             }
         });
+    }
+
+    @FXML
+    private void rimuoviOggetto(ActionEvent event) {
+        Oggetto oggettoSelezionato = listaOggettiPersonaggio.getSelectionModel().getSelectedItem();
+
+        if (oggettoSelezionato == null) {
+            mostraMessaggio(
+                    Alert.AlertType.WARNING,
+                    "Oggetto non selezionato",
+                    "Seleziona un oggetto da rimuovere"
+            );
+        }else{
+            Personaggio p = ArmadioPersonaggi.getInstance().getPersonaggioCorrente();
+
+            if (p != null && p.getInventario().getOggetti().contains(oggettoSelezionato)) {
+                p.rimuovi(oggettoSelezionato);
+                listaOggettiPersonaggio.getItems().remove(oggettoSelezionato);
+                listaOggettiPersonaggio.getSelectionModel().clearSelection();
+
+                mostraMessaggio(
+                        Alert.AlertType.INFORMATION,
+                        "Oggetto rimosso",
+                        "Oggetto " + oggettoSelezionato.getNome()
+                                + " rimosso dall'inventario con successo "
+                );
+            }
+        }
+    }
+
+    private void mostraMessaggio(Alert.AlertType tipo, String titolo, String messaggio) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titolo);
+        alert.setHeaderText(null);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
     }
 
     public void exit(ActionEvent event) throws IOException {

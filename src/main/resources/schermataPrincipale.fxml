@@ -10,8 +10,8 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="it.unicam.cs.mpgc.rpg123022.Controller.SchermataPrincipaleController"
-            prefHeight="620.0"
-            prefWidth="960.0"
+            prefHeight="650.0"
+            prefWidth="990.0"
             style="-fx-background-color: linear-gradient(to bottom, #f7f1e3, #e8dcc8);">
 
     <top>
@@ -71,7 +71,15 @@
                             text="Crea nuovo personaggio"/>
 
         </VBox>
-
+            <VBox alignment="CENTER">
+            <Button text="Oggetti creati"
+                    fx:id="oggettiCreatiButton"
+                    onAction="#apriSchermataListaOggetti"
+                    prefWidth="820"
+                    prefHeight="60."
+                    alignment="CENTER"
+                    style="-fx-background-color: rgba(115, 32, 3, 1); -fx-text-fill: white;"/>
+            </VBox>
         <VBox alignment="CENTER">
             <Button
                     fx:id="inventarioButton"

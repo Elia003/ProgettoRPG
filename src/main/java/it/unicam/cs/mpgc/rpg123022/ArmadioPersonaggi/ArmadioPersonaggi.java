@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg123022;
+package it.unicam.cs.mpgc.rpg123022.ArmadioPersonaggi;
 
 import it.unicam.cs.mpgc.rpg123022.Personaggi.Personaggio;
 
@@ -45,7 +45,10 @@ public class ArmadioPersonaggi {
     }
 
     public int getProssimoId() {
-        return personaggi.size() + 1;
+        return personaggi.stream()
+                .mapToInt(Personaggio::getId)
+                .max()
+                .orElse(0) + 1;
     }
 
     public Personaggio getPersonaggioCorrente() {
@@ -62,6 +65,17 @@ public class ArmadioPersonaggi {
             personaggioCorrente = null;
         } else if (personaggioCorrente == p) {
             personaggioCorrente = personaggi.get(0);
+        }
+    }
+
+    public void caricaPersonaggi(List<Personaggio> personaggiCaricati) {
+        personaggi.clear();
+        personaggi.addAll(personaggiCaricati);
+
+        if (personaggi.isEmpty()) {
+            personaggioCorrente = null;
+        } else {
+            personaggioCorrente = personaggi.get(personaggi.size() - 1);
         }
     }
 }

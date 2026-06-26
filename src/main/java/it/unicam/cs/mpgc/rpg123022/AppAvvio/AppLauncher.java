@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg123022;
+package it.unicam.cs.mpgc.rpg123022.AppAvvio;
 
 import javafx.application.Application;
 

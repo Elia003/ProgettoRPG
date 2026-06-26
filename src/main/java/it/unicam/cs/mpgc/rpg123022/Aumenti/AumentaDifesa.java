@@ -10,6 +10,10 @@ public class AumentaDifesa implements Effetto {
 
     }
 
+    public int getValore() {
+        return valore;
+    }
+
     @Override
     public void applica(Personaggio p) {
         p.setDifesa(p.getDifesa() + valore);

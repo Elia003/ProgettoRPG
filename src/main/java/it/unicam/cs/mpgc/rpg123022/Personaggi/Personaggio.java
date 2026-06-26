@@ -3,9 +3,10 @@ package it.unicam.cs.mpgc.rpg123022.Personaggi;
 import it.unicam.cs.mpgc.rpg123022.Aumenti.Effetto;
 import it.unicam.cs.mpgc.rpg123022.Enum.Classe;
 import it.unicam.cs.mpgc.rpg123022.Enum.Genere;
-import it.unicam.cs.mpgc.rpg123022.Inventario;
-import it.unicam.cs.mpgc.rpg123022.Oggetto;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.Inventario;
+import it.unicam.cs.mpgc.rpg123022.Oggetti.Oggetto;
 import it.unicam.cs.mpgc.rpg123022.Risorse.Risorsa;
+import javafx.scene.control.Alert;
 
 
 public abstract class Personaggio {
@@ -42,7 +43,10 @@ public abstract class Personaggio {
                     effetto.applica(this);
                 }
             }else System.out.println("Spazio nell'inventario insufficente");
-        }else System.out.println("Impossibile equipaggiare l'oggetto puo equipaggiarlo solo un "+ o.getClasseCompatibili());
+        }else {Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Attenzione");
+        alert.setHeaderText(null);
+        alert.setContentText("L'oggetto può essere equipaggiato solo " + o.getClasseCompatibili());}
     }
 
     public void rimuovi(Oggetto o) {
@@ -56,6 +60,10 @@ public abstract class Personaggio {
     //Getter e setter
     public String getNome() {
         return nome;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setNome(String nome) {
